@@ -9,9 +9,11 @@ package course_management_system;
  *
  * @author Shrouk
  */
+enum Gender{male,female}
 public abstract class User {
     protected String Uname,E_mail,Address;
     protected int ID,Pnum,pss;
+    Gender gender;
 
     public User() {
         
