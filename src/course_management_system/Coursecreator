@@ -1,0 +1,19 @@
+public class coursecreator {
+    public String courname;
+    
+    public void createcourse(String courname){
+      System.out.println("course created successfully");
+     }
+    public void addcourse(String courname){
+      System.out.println("course added successfully");
+     }
+    public void deletecourse(String courname){
+      System.out.println("course deleted successfully");
+     }
+    public void updatecourse(String courname){
+      System.out.println("course updated successfully");
+     }
+    
+    
+    
+}
