@@ -1,17 +1,32 @@
+import java.util.ArrayList
 public class coursecreator {
-    public String courname;
+    public String coursename;
+    ArrayList <course> Course = new ArrayList <course>();
+   
+   
+    public void Setdate (CourseTimer)
+    {
     
-    public void createcourse(String courname){
-      System.out.println("course created successfully");
+    CourseTimer start = new CourseTimer();
+    CourseTimer End = new CourseTimer();
+    start.setStartTime("value of start time");
+    End.setEndTime("value of end time");
+    }
+    
+    public void Modifydate (CourseTimer)
+    {
+     courseTimer modify = new CourseTimer("start","End");
      }
-    public void addcourse(String courname){
-      System.out.println("course added successfully");
+    public void addcourse(String coursename){
+      course.add(coursename);
      }
-    public void deletecourse(String courname){
-      System.out.println("course deleted successfully");
+    public void deletecourse(String coursename){
+           course.remove(coursename);
+
      }
-    public void updatecourse(String courname){
-      System.out.println("course updated successfully");
+    public void updatecourse(String courname,int x){
+           course.add(x,coursename);
+
      }
     
     
