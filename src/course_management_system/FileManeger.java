@@ -9,25 +9,46 @@ package course_management_system;
  *
  * @author Shrouk
  */
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-public class FileManeger {
-    
-    public boolean Write(String Query,String filepath,boolean appand){
-        PrintWriter writer=null;
-        try{
-           writer=new PrintWriter(new FileWriter(new File(filepath),appand));
-           writer.println(Query);
-           return true;
-        
-        }
-        catch( IOException e){
-           System.out.println(e);
-        
-        }
-        finally {
-          writer.close();
-        }
-      return false;
+import java.io.PrintWriter;
+
+/**
+ *
+ * @author hp
+ */
+public class FileManager {
+    public boolean Write(String query,String Filepath,boolean appendtype){
+         PrintWriter writer = null;
+         try{
+             System.out.println("writing in File "+Filepath);
+             writer = new PrintWriter(new FileWriter(Filepath),appendtype);
+             writer.print(query);
+             System.out.println("done");
+             return true;
+         }catch(IOException e){
+             System.out.println(e);
+         }finally{
+             writer.close();
+         }
+         return false;
     }
+    
 }
+public ArrayList<object> read (String filepath){
+       Scanner reader = null;
+       try{
+           System.out.println("REading from file"+filepath);
+           reader = new Scanner(new File(filepath));
+          
+}catch(FileNotFoundException e){
+      System.out.println(e);
+}
+if (filpath.equals("Student.txt")){
+    ArrayList<Student> students = new ArrayList<Student>;
+    Student x;
+    while(reader.hasNext()){
+     x=new Student();
+     String line = reader.nextLine();
+     String[]data = line.Split("#");
