@@ -19,14 +19,19 @@ enum Branch{Cairo};
 
 public class Course implements Serializable{
     
-  private String Cname,CID;
-  private float C_Hour;
-  private float price;
-  private Branch branch;
-  private int maxstudent;
-  private int Room_Num; 
-  ParentCourse PCour;
-  
+   private String Coursename ;  //methods of this list will use ;
+    private double CoursePrice;    //will setinside class manager;
+    private final int CourseHours = 30; 
+    private int  roomnumber;
+    //no.of hours is constant for specific task
+    private String idcourse;
+    private int Maxno_StudentInCourse;
+    private float Grades;
+    private ArrayList<Student> student = new ArrayList<Student>();
+    private ArrayList<Coursen> courses = new ArrayList<Coursen>();
+    private String sectiontime,instructorname,start_time,end_time; 
+    protected String CourseFile ="Course.txt";
+
   
   
   FileManager FM=new FileManager();
