@@ -3,39 +3,71 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package course_management_system;
+package course;
 
 /**
  *
- * @author Shrouk
+ * @author hp
  */
+public abstract class User {
+    protected String fname,lname,E_mail,Address;
+    protected int ID,Pnum;
+     protected String password;
+     protected String Username;
+     
+     FileManager filemanager = new FileManager();
 
-enum Gender{male,female}
-public class User {
+    public User() {}
     
-    protected String Fname,Lname,Uname,E_mail,Address;
-    protected int ID,Pnum,pss;
-    Gender gender;
-
-    public User() {
-        
-        
-        
+    
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
- 
 
-    public User(String Uname, String E_mail, String Address, int ID, int Pnum, int pss) {
-        this.Uname = Uname;
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+
+    public User(String fname, String lname, String E_mail, String Address, int ID, int Pnum, String password, String Username) {
+        this.fname = fname;
+        this.lname = lname;
         this.E_mail = E_mail;
         this.Address = Address;
         this.ID = ID;
         this.Pnum = Pnum;
-        this.pss = pss;
+        this.password = password;
+        this.Username = Username;
     }
 
-    public void setUname(String Uname) {
-        this.Uname = Uname;
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+     
+     
+ 
+
+    public User(String fname,String lname, String E_mail, String Address, int ID, int Pnum) {
+        this.fname = fname;
+        this.lname = lname;
+        this.E_mail = E_mail;
+        this.Address = Address;
+        this.ID = ID;
+        this.Pnum = Pnum;
+        
+    }
+     public boolean login(String username, String Pass) {
+        if (username.equals(this.getUsername()) && Pass.equals(this.getPassword())) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setfname(String fname) {
+        this.fname = fname;
     }
 
     public void setE_mail(String E_mail) {
@@ -53,13 +85,20 @@ public class User {
     public void setPnum(int Pnum) {
         this.Pnum = Pnum;
     }
+   
 
-    public void setPss(int pss) {
-        this.pss = pss;
+ 
+
+    public String getfname() {
+        return fname;
     }
 
-    public String getUname() {
-        return Uname;
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getE_mail() {
@@ -77,19 +116,10 @@ public class User {
     public int getPnum() {
         return Pnum;
     }
+    
+ 
+  
 
-    public int getPss() {
-        return pss;
-    }
-    
-    public void Login(String Uname,int pass){                               /////////waiting/////////////////////
-      
-    System.out.println("LOGIN is Compelete");
-    }
-    
-    public void SignUp(String Uname, String E_mail, String Address, int ID, int Pnum, int pss){   /////////////////////waiting///////////////
-        System.out.println("  Done!!  "); 
-    
-    }
     
 }
+
