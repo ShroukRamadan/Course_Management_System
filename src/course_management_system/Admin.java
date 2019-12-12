@@ -3,72 +3,73 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package course_management_system;
+package course;
 
 /**
  *
- * @author Shrouk
+ * @author hp
  */
-public class Admin extends User{
+public class Admin  extends User{
+    
+    
+   /* public void AddStudent(){
+        Student x= new Student();
+        if(x.AddStudent()==true)
+            x.toString();
+        else
+            System.out.println("error in insertion");
+    }*/
 
-    public Admin() {
-    }
+    
+   public void DeleteStudent(){
+       Student x= new Student();
+       x.DeleteStudent(ID);
+       System.out.println("Deleted Successfully :)");
+   }
    
-
-    public Admin(String Uname, String E_mail, String Address, int ID, int Pnum, int pss) {
-        super(Uname, E_mail, Address, ID, Pnum, pss);
-    }
-
+   public void UpdateStudent(int oldid,Student newvalue){
+       Student x= new Student();
+       x.UpddateStudent(oldid, newvalue);
+       System.out.println("Updated successfully");
+   }
+   
+   public void AddInstructor(){
+       Instructor i = new Instructor();
+       if(i.AddInstructor()==true)
+           i.toString();
+       else
+            System.out.println("error in insertion");
+      
+   }
+   
+   public void DeleteInstructor(){
+        Instructor i = new Instructor();
+        i.DeleteInstructors(ID);
+         System.out.println("Deleted Successfully :)");
+   }
+   
+    public void UpdateInstructor(int oldid,Instructor newvalue){
+       Instructor i = new Instructor();
+       i.UpdateInstructor(oldid, newvalue);
        
-    public void Login()                                                ///////////////////waiting///////////////////////
-    {
-    
-    }
-    public void SignUp()
-    {
-    
+   }
+   @Override
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void SearchForStudent()
-    {
-    
-    }
-    
-    public void AddStudent()
-    {
-    
-    }
-    
-    public void DeleteStudent()
-    {
-    
-    }
-    
-    public void UpdateStudent()
-    {
-    
-    }
-    
-    public void SearchForInstructor()
-    {
-    
-    }
-    
-    public void AddInstructor()
-    {
-    
-    }
-    
-    public void DeleteInstructor()
-    {
-    
+   @Override
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 
-    public void UpdateInstructor()
-    {
-    
+    public String getPassword() {
+        return password;
     }
 
+    public String getUsername() {
+        return Username;
+    }
     
     
 }
