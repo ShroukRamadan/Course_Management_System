@@ -106,5 +106,14 @@ public class User {
     }
     
     
+    public void Login(String Uname,int pass)
+    {                                 
+    System.out.println("LOGIN is Compelete");
+    }
+    
+    public void SignUp(String Uname, String E_mail, String Address, int ID, int Pnum, int pss){   /////////////////////waiting///////////////
+        System.out.println("  Done!!  "); 
+    
+    }
     
 }

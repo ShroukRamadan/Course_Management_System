@@ -12,8 +12,7 @@ package course_management_system;
 public class ParentCourse {
      private String PC_ID;
      private String PC_Name;
-     private int MaxNumOfCourse;
-             
+
     public ParentCourse() {
     }
 

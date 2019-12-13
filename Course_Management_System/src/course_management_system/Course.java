@@ -16,8 +16,14 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 
-enum Branch{Cairo,Giza}
-//enum PCour{is,it,pl,cs}
+enum Branch{
+   Cairo,
+   giza}
+
+
+
+
+
 public class Course implements Serializable{
     
   private String Cname,CID;
@@ -29,9 +35,8 @@ public class Course implements Serializable{
   private int maxstudent;
   private int Room_Num; 
   ParentCourse PCour;
- 
-  User ins=new Instructor();
-
+  
+//  CourseTimer CT=new CourseTimer();
   
   
   FileManager FM=new FileManager();
@@ -98,6 +103,8 @@ public class Course implements Serializable{
         this.end_time = endt_time;
     }
     
+    
+
     public String getCname() {
         return Cname;
     }
@@ -133,82 +140,79 @@ public class Course implements Serializable{
     public int getEndt_time() {
         return end_time;
     }
- 
+ User ins=new Instructor();
     
   @Override
     public String toString()
     {
-        return "CourseName" + Cname + "CourseID" + CID +"parent course" + PCour+ "start_time" +start_time + "end_time" + end_time +"CourseHour"
-               + C_Hour + "max_num_students" + maxstudent +  "price" + price + "Room" + Room_Num + "Branch" + branch+ "instructor" 
-               + ins.getUname(); 
+        return "CourseName" + Cname + "CourseID" + CID +"parent course" + PCour+ "start_time" +start_time + "end_time" + end_time +"CourseHour" + C_Hour + "max_num_students" + maxstudent + 
+               "price" + price + "Room" + Room_Num + "Branch" + branch+ "instructor" + ins.getFname() +ins.getLname() ; 
     }
 
- public boolean addCourse() {
-        if (FM.write(getCourseData(), CourseFileName, true)) {
-            return true;
-        } else {
-            return false;
-        }
+    public void ChengesFile() 
+    {
+         FM.write(Courses.get(0).toString(),CourseFileName, false);
+       for(int i =1 ;i<Courses.size();i++){
+           FM.write(Courses.get(i).toString(),CourseFileName, true);
+       }
     }
 
-    private String getCourseData() {
-        return this.Cname + "$" + this.CID+ "$" + this.PCour + "$" + this.start_time + "$" + this.end_time + "$" + this.C_Hour + "$" 
-                + this.maxstudent + "$" + this.price + "$" + this.Room_Num + "$" + this.branch + "$" + this.ins.getUname();
+    
+    private void  ReadFromFile()
+    {
+         Courses = (ArrayList<Course>)(Object) FM.read(CourseFileName);
     }
 
-      
-    private void ChangeFile() {
-        FM.write(Courses.get(0).getCourseData(), CourseFileName, false);
-        for (int i = 1; i < Courses.size(); i++) {
-            FM.write(Courses.get(i).getCourseData(), CourseFileName, true);
-        }
-
-    }
-
-    private int getCourseIndex(String id){
-        for (int i = 0; i < Courses.size(); i++)
-            if(Courses.get(i).getCID().equals(id))
+    private int getCourseIndex(String id) {
+        for (int i = 0; i < Courses.size(); i++) {
+            if (Courses.get(i).getCID().equals(id)) {
                 return i;
-        
+            }
+        }
+
         return -1;
     }
-    
-    private void ReadFromFile() {
-            Courses = (ArrayList<Course>) (Object) FM.read(CourseFileName);
+
+    public Course searchCourseById(String id) {
+        Course temp = new Course();
+        ReadFromFile();
+        int index = getCourseIndex(id);
+        if (index != -1) {
+            return Courses.get(index);
+        } else {
+            return temp;
+        }
     }
 
-    public String displayAllCourses() {
+    public ArrayList<Course> ShowCourses() {
         ReadFromFile();
-        String S = "\nAll Courses Data:\n";
-        for (Course x : Courses) {
-            S = S + x.toString();
+        return Courses;
+    }
+
+    public void UpddateStudent(String C_Old_ID , Course c){
+        ReadFromFile();
+        int index =c.getCourseIndex(C_Old_ID);
+        Courses.set(index, c);
+        C.ChengesFile();
+    }
+
+      public void AddCourse()
+      {
+        ReadFromFile();
+        Courses.add(this);
+        C.ChengesFile();
+      }
+      
+    public void DeleteCourse(String id) {
+        ReadFromFile();
+        int index = getCourseIndex(id);
+
+        if (index != -1) {
+            Courses.remove(index);
+            C.ChengesFile();
         }
-        return S;
+        
     }
-    
-    public String searchCourse(String id){
-        ReadFromFile();
-        int index = getCourseIndex(id);
-        if(index != -1)
-            return "\nFound ...!" + Courses.get(index).toString();
-        else 
-            return "\nNot Found ...!";
-    }
-    
-    public void updateCourse(String oldID, Course x){
-        ReadFromFile();
-        int index = getCourseIndex(oldID);
-        Courses.set(index, x);
-        ChangeFile();
-    } 
-    
-    public void deleteCourse(String id){
-        ReadFromFile();
-        int index = getCourseIndex(id);
-        Courses.remove(index);
-        ChangeFile();
-    } 
-  
 
    
     

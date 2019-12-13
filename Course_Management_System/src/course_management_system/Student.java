@@ -6,55 +6,37 @@
 package course_management_system;
 
 import java.util.ArrayList;
-import java.io.Serializable;
 
 /**
  *
  * @author Shrouk
  */
-public class Student extends User implements Ilogin {
-    
-    
+public class Student extends User {
      //belong to class rather than object..
    public static ArrayList<Student> students = new ArrayList<Student>();
    
    private final String FileStudent= "Student.txt";
    
    FileManager file= new FileManager();
-   Student s;
+
     public Student()
     {
     
     }
 
-    public Student(String Uname, String E_mail, String Address, int ID, int Pnum, int pss)
-    {
+    public Student(String Uname, String E_mail, String Address, int ID, int Pnum, int pss) {
         super(Uname, E_mail, Address, ID, Pnum, pss);
     }
  
+    
    
-   public void SignUp(int id,String Fname,String lname,String username,String Email,String address,int Pnum,int pass ,Gender gender)    ////////////////////////waiting
-   {
-       
-   }
-   public boolean Login(String Email, String Password) {
-        ReadFromFile();
-        for (Student x : students) {
-            if (Email.equals(x.E_mail) && Password.equals(x.pss)) {
-                return true;
-            }
-        }
-        return false;
-    }
     
     
 
    
-    //ID $ Fname $ Lname $ Address $ E_mail $ Pnum $ Uname $ pss 
-   
-   private String Studentdata()
-   {
-      return super.ID+"$"+super.Fname+"$"+super.Lname+"$"+super.Address+"$"+super.E_mail+"$"+super.Pnum+"$"+super.Uname+"$"+super.pss+"$";
+    //201801001@esraa@Tamer@address@esraatamer022GAMIL.com@phone number@username@password@
+   private String Studentdata(){
+      return super.ID+"@"+super.Fname+"@"+super.Lname+"@"+super.Address+"@"+super.E_mail+"@"+super.Pnum+"@"+super.Uname+"@"+super.pss+"@";
    }
    
   
@@ -96,11 +78,11 @@ public class Student extends User implements Ilogin {
         return S;
     }
     
-//   public String SurveySpecificcourse(){
-//   return"done";
-//   }
+   public String SurveySpecificcourse(){
+   return"done";
+   }
    
-//   public void ShowGradeOfSpecificCourse(){};
+   public void ShowGradeOfSpecificCourse(){};
    
    
    public boolean AddStudent(){

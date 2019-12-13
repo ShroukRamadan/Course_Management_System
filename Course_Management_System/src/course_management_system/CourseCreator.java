@@ -12,49 +12,42 @@ import java.util.ArrayList;
  *
  * @author Shrouk
  */
-public class CourseCreator implements Ilogin {
+public class CourseCreator {
       
-    ArrayList <Course> Courses = new ArrayList <Course>();
+    ArrayList <Course> Course = new ArrayList <Course>();
     
   
-    @Override
-     public boolean Login(String Email, String Password) {
-        
-        return Email.equals("Manager@yahoo.com") && Password.equals("12345678");
-
+    public void Login()
+    {
+    
     }
     
-    public void addNewCourse(String Cname, String CId, int CreditHours) {
-        Course x = new Course();
-        if (x.addCourse()) {
-            System.out.println(x.toString() + "Added Successfully ... !");
-        } else {
-            System.out.println("Failed to insert ... !");
-        }
+    public void AddCourse()                                                      //////////////////waiting///////////////////
+    {
+    
     }
-
-    public void displayCourses() {
-        Course x = new Course();
-        System.out.println(x.displayAllCourses());
+    
+    public void DeleteCourse()
+    {
+    
     }
-
-    public void searchForCourse(String id) {
-        Course x = new Course();
-        System.out.println(x.searchCourse(id));
+    public void UpdateCourse()
+    {
+    
     }
-
-    public void updateCourse(String oldID, Course newCourseValues) {
-        Course x = new Course();
-        x.updateCourse(oldID, newCourseValues);
-        System.out.println("Updated Successfully ... !");
+ 
+    public void SearchForCourse()
+    {
+    
     }
-
-    public void deleteCourse(String Id) {
-        Course x = new Course();
-        x.deleteCourse(Id);
-        System.out.println("deleted Successfully ... !");
+ 
+    public ArrayList<Course> ListCourses()
+    {
+        /////////////////
+    
+        return Courses;
     }
-
+   
    
   
     

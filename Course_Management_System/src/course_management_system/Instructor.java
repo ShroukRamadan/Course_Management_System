@@ -25,7 +25,7 @@ public class Instructor extends User{
    
     //1@Ayman@Ezzat@address@email@phonenumber@coursename@worktimes2pm to 4pm@username@password@
     private String Instructordata(){
-      return super.ID+"$"+super.Lname+"$"+super.Lname+"$"+super.Address+"$"+super.E_mail+"$"+super.Pnum+"$"+this.Coursename+"$"+this.work_time+"$"+super.Uname+"$"+super.pss+"@";
+      return super.ID+"@"+super.Lname+"@"+super.Lname+"@"+super.Address+"@"+super.E_mail+"@"+super.Pnum+"@"+this.Coursename+"@"+this.work_time+"@"+super.Uname+"@"+super.pss+"@";
    }
    
     
@@ -47,11 +47,7 @@ public class Instructor extends User{
         return -1;
     }
     
-    public void Show(){};   
-    
-
-
-
+    public void publish(){};///think about it;
     public void ReadFromFile(){
         instructors = (ArrayList<Instructor>)(Object)filemanager.read(FileInstructor);
     }
