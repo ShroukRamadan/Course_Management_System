@@ -14,7 +14,6 @@
  * and open the template in the editor.
  */
 package gui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,11 +24,11 @@ import java.awt.event.ActionListener;
  * @author DELL
  */
 public class Admin_gui extends JFrame implements ActionListener{
-    JPanel p1,p2,p3,p4;
+    JPanel p0,p1,p2,p3,p4;
     JButton b1,b2,b4,b5,b7,b8;
-    JTextField t,t1,t2,t3,t4,t6,t7,t8,t9,t10;
+    JTextField t1,t2,t3,t4,t6,t7,t8,t9,t10;
     JPasswordField t5,t11;
-    JLabel l,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12;
+    JLabel l0,l,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l22;
     JComboBox Subject;
         String Subjects[] = { "CS", "IS", "Phusics", "PL2", "Logic"}; 
 
@@ -42,7 +41,8 @@ public Admin_gui(){
     this.setResizable(false);
     this.setLayout(null);
        // p4 =new JPanel();
-     p1 =new JPanel()   ;
+     p1 =new JPanel();
+     p0 =new JPanel();
     b1 =new JButton("Add New Student");
     b2 =new JButton("List All Student");
     
@@ -52,23 +52,29 @@ public Admin_gui(){
     b7 =new JButton("Add Student");
     b8 =new JButton("Add instructor");    
     
-    t =new JTextField("");
     t1 =new JTextField("");
     t2 =new JTextField("");
     t3 =new JTextField("");
     t4 =new JTextField("");
     t5 =new JPasswordField("");
+    l0 =new JLabel("Admin Role");
     l =new JLabel("Add new student...");
     l1 =new JLabel("ID:");
     l2 =new JLabel("Fname:");
     l3 =new JLabel("Lname");
     l4 =new JLabel("Email");
     l5 =new JLabel("password");
+    l22 =new JLabel("Student Added Successfully!");
    //  p3.setLayout(null);p4.setLayout(null);
-     //p1
+     //p0
+    p0.setLayout(null);
+    p0.setBounds(200,0,600,800);this.add(p0);
+    p0.setBackground(Color.white);
+    l0.setBounds(40,40,200,25);p0.add(l0);
+    l0.setFont(new Font("atilic",Font.PLAIN,30));
+    //p1
     p1.setLayout(null);
     p1.setBounds(0,0,200,600);this.add(p1);
-    
     b1.setBounds(25,100,150,40);p1.add(b1);
     b2.setBounds(25,200,150,40);p1.add(b2);
  
@@ -81,6 +87,7 @@ public Admin_gui(){
     p2.setVisible(false);
     p2.setLayout(null);
     p2.setBounds(200,0,600,600);this.add(p2);
+    
     
     l.setBounds(20,50,200,25);p2.add(l);
     l.setFont(new Font("atilic",Font.PLAIN,20));
@@ -95,6 +102,10 @@ public Admin_gui(){
     l5.setBounds(100,300,70,25);p2.add(l5);
     t5.setBounds(180,300,200,25);p2.add(t5);
     b7.setBounds(200,380,150,40);p2.add(b7);
+    
+    l22.setBounds(100,430,250,40);p2.add(l22);
+    l22.setFont(new Font("atilic",Font.PLAIN,20));
+    l22.setVisible(false);
     p2.setBackground(Color.white);
     //l3.setFont(new Font("atilic",Font.PLAIN,20));
     b1.addActionListener(this);
@@ -138,6 +149,7 @@ public Admin_gui(){
     b8.setBounds(200,410,150,40);p3.add(b8);
     p3.setBackground(Color.white);
     b4.addActionListener(this);
+    b7.addActionListener(this);
 
 
 }
@@ -147,11 +159,30 @@ public Admin_gui(){
         if(e.getSource()==b1){
             p2.setVisible(true);
             p3.setVisible(false);
+            p0.setVisible(false);
+            l22.setVisible(false);
         }
         else if(e.getSource()==b4){
         p2.setVisible(false);
         p3.setVisible(true);
+        p0.setVisible(false);
+        l22.setVisible(false);
     }
+        else if (e.getSource()==b7){
+           String s1= t1.getText().toString();
+           String s2= t2.getText().toString();        
+           String s3= t3.getText().toString();
+           String s4= t4.getText().toString();
+           String s5= t5.getText().toString();
+
+            FWrite_gui.re("Registration.txt","ID:"+s1+"||Fname:"+s2+" || LastName:"+s3+" || Email:" +s4+" ||Password:"+s5);
+            t1.setText("");
+            t2.setText("");
+            t3.setText("");
+            t4.setText("");
+            t5.setText("");
+            l22.setVisible(true);
+        }
         
     }
     
