@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 public class Instructor_gui extends JFrame implements ActionListener{
     JButton b1,b2;
     JPanel p1,p2;
-    JLabel l,l1,l2;
+    JLabel l,l1,l2,l3;
     JTextField t1,t2;
     
     public Instructor_gui(){
@@ -45,6 +45,7 @@ public class Instructor_gui extends JFrame implements ActionListener{
     l1 =new JLabel("Student ID:");
     l2 =new JLabel("Grade:");
     l =new JLabel("Welcome Dr:Ahmed");
+    l3 =new JLabel("Grade Added Successfully!");
     
 //    JMenuBar mb =new JMenuBar();
 //    JMenu m1=new JMenu("Setting");
@@ -70,6 +71,9 @@ public class Instructor_gui extends JFrame implements ActionListener{
     l2.setBounds(200,195,100,10);p2.add(l2);
     t2.setBounds(200,210,200,25);p2.add(t2);
     b2.setBounds(200,240,200,25);p2.add(b2);
+     l3.setBounds(200,270,300,30);p2.add(l3);
+     l3.setFont(new Font("atilic",Font.PLAIN,17));
+     l3.setVisible(false);
     
    // l4.setFont(new Font("atilic",Font.PLAIN,20));
 
@@ -90,9 +94,17 @@ public class Instructor_gui extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
                 if(e.getSource()==b2){
-            String sn=JOptionPane.showInputDialog("Enter Spot Number");
-            FWrite_gui.re("Instructor_file.txt",sn);
-            t2.setText(sn);
+           String s1= t1.getText().toString();
+           String s2= t2.getText().toString();        
+
+            FWrite_gui.re("Grades.txt","ID:"+s1+"||Grade:"+s2);
+            t1.setText("");
+            t2.setText("");
+           
+            l3.setVisible(true);
+
+             t1.setText("");
+            t2.setText("");
         }
 
     }
