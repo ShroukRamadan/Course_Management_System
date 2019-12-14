@@ -81,6 +81,7 @@ public class Registration_gui extends JFrame implements ActionListener{
     t6 =new JPasswordField("");
     t2 =new JPasswordField("");
     l1 =new JLabel("Email:");
+    
     l2 =new JLabel("Password:");
     l3 =new JLabel("Create a new account");
     l4 =new JLabel("It's quick and easy");
@@ -158,17 +159,36 @@ public class Registration_gui extends JFrame implements ActionListener{
     p1.setBackground(Color.CYAN);
     p2.setBackground(Color.white);
     
+    b1.addActionListener(this);
     b2.addActionListener(this);
+
 }
 //end Constructor    
         @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==b2){
+                if(e.getSource()==b1){
+            
+           String s1= t1.getText().toString();
+           String s2= t2.getText().toString();      
+            FWrite_gui.re("Login.txt","UserName :"+s1+"||Password :"+s2);
+            
+
+        }
+
+        else if(e.getSource()==b2){
             Admin_gui a=new Admin_gui();
             setVisible(false);
-        }
-        else if(e.getSource()==b1){
+           String s1= t3.getText().toString();
+           String s2= t4.getText().toString();        
+           String s3= t5.getText().toString();
+           String s4= t6.getText().toString();
+
+            FWrite_gui.re("Registration.txt","Fname:"+s1+" || LastName:"+s2+" || Email:" +s3+" ||Password:"+s4);
+//            t1.setText("");
+//            t2.setText("");
+//            t3.setText("");
             
+            //t3fname_t4lname_t5Email_t6PAssword
         }
 
 
