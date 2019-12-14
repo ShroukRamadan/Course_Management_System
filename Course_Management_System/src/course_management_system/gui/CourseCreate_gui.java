@@ -48,7 +48,7 @@ import java.util.ArrayList;
  */
 public class CourseCreate_gui  extends JFrame implements ActionListener{
         JPanel p1,p2,p3;
-    JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14;
+    JButton b1,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14;
     JLabel l1,l2;
     JComboBox date,month,year; 
     JRadioButton male,female;
@@ -57,14 +57,6 @@ public class CourseCreate_gui  extends JFrame implements ActionListener{
     ArrayList<JButton> myB = new ArrayList<JButton>();
     Dimension d = new Dimension(50, 50);
     String s = "", s1 = "";
-    JButton B = new JButton(), B1 = new JButton();
-public void addButtons()
-    {
-        for(int i = 0; i < 9; i++)
-        {
-            myB.add(new JButton());         //IMP
-        }
-    }
 
 
     public CourseCreate_gui(){
@@ -79,9 +71,6 @@ public void addButtons()
         p1 =new JPanel();p2 =new JPanel();p3 =new JPanel();
         
     b1 =new JButton("Add course");
-    b2 =new JButton("Update course");
-    b3 =new JButton("Delete course");
-    b4 =new JButton("Show course");
     b5 =new JButton("Graphics");
     b6 =new JButton("Multi Media");
     b7 =new JButton("Electronics");
@@ -102,10 +91,7 @@ public void addButtons()
     p1.setBounds(0,0,200,600);this.add(p1);
     p2.setBounds(200,0,600,600);this.add(p2);
     
-    b1.setBounds(40,120,120,50);p1.add(b1);
-    b2.setBounds(40,190,120,50);p1.add(b2);
-    b3.setBounds(40,260,120,50);p1.add(b3);
-    b4.setBounds(40,330,120,50);p1.add(b4);
+    b1.setBounds(1,1,p1.getWidth()-2,50);p1.add(b1);
 
 
     l1.setBounds(20,20,280, 30);p2.add(l1);
@@ -153,10 +139,14 @@ public void addButtons()
             
             s = JOptionPane.showInputDialog("Course Name");
             JButton bb =new JButton(s);
-                p3.add(bb);
+            if(s==null){
+                 ;
+            }
+            else{
+    p3.add(bb);
     bb.setFont(new Font("atilic",Font.PLAIN,20));
     FWrite_gui.re("Coursesss.txt",s);
-
+            }
         
 
         }
